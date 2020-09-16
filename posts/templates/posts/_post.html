@@ -1,0 +1,13 @@
+<div>
+    <h3>{{post.message_html|safe}}</h3>
+    <p>{{post.user.username}}</p>
+    <a href="{% url 'posts:for_user' username=post.user.username%}">{{post.user.username}}</a>
+    <a href="{% url 'posts:single' pk=post.pk %}">{{post.created_at}}</a>
+
+</div>
+
+<div>
+    {% if user.is_authenticated and post.user == user and not hide_delete%}
+        <a href="{% url 'posts:delete' pk=post.pk%}">Delete</a>
+    {% endif %}
+</div>

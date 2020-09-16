@@ -1,0 +1,35 @@
+{% extends 'groups/group_base.html' %}
+{% block pre_group %}
+    <div>
+        {% if user.is_authenticated %}
+          <h3>Welcome Back!</h3>
+          <h4><a href="">@{{user.username}}</a></h4>
+        {% endif %}
+    </div>
+{% endblock pre_group %}
+
+{% block group_content %}
+    <div class="group-detail-div">
+        <div>
+            <h1>{{group.name}}</h1>
+            <h3>{{group.description_html|safe}}</h3>
+            <h4>Member Count : {{group.members.count}}</h4>
+        </div>
+        <div>
+            {% if user in group.members.all %}
+                <a href="{% url 'groups:leave' slug=group.slug%}" class="btn btn-warning">Leave Group</a>
+            {% else %}
+                <a href="{% url 'groups:join' slug=group.slug%}" class="btn btn-primary">Join Group</a>
+            {% endif %}
+        </div>
+    </div>
+    {% if group.posts.count == 0 %}
+      <h3>No post yet</h3>
+    {% else %}
+        {% for post in group.posts.all %}
+            {% include "posts/_post.html"%}
+        {% endfor %}
+    {% endif %}
+{% endblock group_content %}
+
+{% block post_group %}{% endblock post_group %}

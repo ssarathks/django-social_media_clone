@@ -1,0 +1,9 @@
+{% extends 'posts/post_base.html' %}
+
+{% block post_content %}
+    <div>
+        hai this is post detail page
+        {{post.name}}
+        {% include "posts/_post.html"%}
+    </div>
+{% endblock post_content %}

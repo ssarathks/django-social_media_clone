@@ -1,0 +1,22 @@
+.group-detail-div{
+    margin: auto;
+    width: 80%;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 30px;
+    color: white;
+    border: 1px solid white;
+    border-radius: 20px;
+}
+
+.group-list-div{
+    border: 1px solid grey;
+    margin-top: 20px;
+    padding: 10px 20px;
+}
+.form-div{
+    margin: auto;
+    width: 80%;
+}
